@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lenis Design Example</title>
+    <style>
+        /* Lenis डिज़ाइन के लिए CSS */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9; /* हल्का, Lenis बैकग्राउंड */
+            font-family: Arial, sans-serif;
+        }
+
+        #lenisButton {
+            /* सामान्य बटन स्टाइलिंग */
+            padding: 15px 30px;
+            font-size: 18px;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            
+            /* ✨ मुख्य Lenis सिद्धांत: स्मूथ ट्रांज़िशन ✨ */
+            /* रंग और शैडो में बदलाव 0.5 सेकंड में आराम से होगा। */
+            transition: background-color 0.5s ease-in-out, box-shadow 0.3s ease; 
+            
+            /* शुरुआती Lenis स्टाइल */
+            background-color: #6c757d; /* कोमल ग्रे */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        #lenisButton:hover {
+            /* हॉवर पर हल्का Fortis इफ़ेक्ट (थोड़ा ध्यान खींचने वाला) */
+            background-color: #5a6268;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Lenis (Active) क्लास - JavaScript द्वारा जोड़ी जाएगी */
+        .active {
+            /* जब JS यह क्लास जोड़ेगा, तो रंग 0.5s में धीमे से बदलेगा */
+            background-color: #007bff !important; /* शांत नीला */
+        }
+    </style>
+</head>
+<body>
+
+    <button id="lenisButton">
+        Lenis बटन (कोमल ट्रांज़िशन)
+    </button>
+
+    <script>
+        // JavaScript (JS)
+        document.getElementById('lenisButton').addEventListener('click', function() {
+            // बटन को 'active' क्लास टॉगल करने दें
+            this.classList.toggle('active');
+
+            // Lenis: प्रतिक्रिया को आरामदायक बनाने के लिए 
+            // 0.5 सेकंड बाद टेक्स्ट बदलें ताकि एनीमेशन पूरा हो जाए
+            setTimeout(() => {
+                if (this.classList.contains('active')) {
+                    this.textContent = 'Lenis सक्रिय!';
+                } else {
+                    this.textContent = 'Lenis बटन (कोमल ट्रांज़िशन)';
+                }
+            }, 500); // CSS ट्रांज़िशन की अवधि के बराबर
+        });
+    </script>
+</body>
+</html>
