@@ -3,72 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lenis Design Example</title>
+    <title>Lenis Scroll Effect Example</title>
     <style>
-        /* Lenis डिज़ाइन के लिए CSS */
+        /* सामान्य बॉडी और कंटेनर स्टाइलिंग */
         body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+            font-family: 'Arial', sans-serif;
+            background-color: #fafafa;
             margin: 0;
-            background-color: #f4f4f9; /* हल्का, Lenis बैकग्राउंड */
-            font-family: Arial, sans-serif;
+            padding: 0;
+            min-height: 200vh; /* स्क्रॉल करने के लिए जगह */
         }
 
-        #lenisButton {
-            /* सामान्य बटन स्टाइलिंग */
-            padding: 15px 30px;
-            font-size: 18px;
+        .header {
+            background-color: #34495e;
             color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            
-            /* ✨ मुख्य Lenis सिद्धांत: स्मूथ ट्रांज़िशन ✨ */
-            /* रंग और शैडो में बदलाव 0.5 सेकंड में आराम से होगा। */
-            transition: background-color 0.5s ease-in-out, box-shadow 0.3s ease; 
-            
-            /* शुरुआती Lenis स्टाइल */
-            background-color: #6c757d; /* कोमल ग्रे */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            text-align: center;
         }
 
-        #lenisButton:hover {
-            /* हॉवर पर हल्का Fortis इफ़ेक्ट (थोड़ा ध्यान खींचने वाला) */
-            background-color: #5a6268;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        .section {
+            width: 80%;
+            margin: 100px auto;
+            padding: 40px;
+            background-color: white;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            border-radius: 12px;
+            transition: transform 1s ease-out, opacity 1s ease-out; /* Lenis ट्रांज़िशन */
         }
 
-        /* Lenis (Active) क्लास - JavaScript द्वारा जोड़ी जाएगी */
-        .active {
-            /* जब JS यह क्लास जोड़ेगा, तो रंग 0.5s में धीमे से बदलेगा */
-            background-color: #007bff !important; /* शांत नीला */
+        /* 1. शुरुआती Lenis स्थिति (ऑफ-स्क्रीन/अदृश्य) */
+        .section-hidden {
+            opacity: 0; /* पूरी तरह अदृश्य */
+            transform: translateY(50px); /* 50px नीचे से शुरू */
+        }
+
+        /* 2. जब सेक्शन दिखाई दे (JS द्वारा जोड़ी गई क्लास) */
+        .section-visible {
+            opacity: 1; /* पूरी तरह दृश्यमान */
+            transform: translateY(0); /* अपनी सामान्य स्थिति में वापस */
         }
     </style>
 </head>
 <body>
 
-    <button id="lenisButton">
-        Lenis बटन (कोमल ट्रांज़िशन)
-    </button>
+    <div class="header">
+        <h1>Lenis स्क्रॉल अनुभव</h1>
+        <p>कोमल और आरामदायक स्क्रॉलिंग इफ़ेक्ट</p>
+    </div>
+
+    <div class="section section-hidden">
+        <h2>पहला सेक्शन: धीरे से प्रकट</h2>
+        <p>यह सामग्री अचानक नहीं, बल्कि 1 सेकंड की कोमल अवधि में नीचे से ऊपर की ओर स्लाइड करते हुए दिखाई देगी। यही Lenis सिद्धांत है - कम कठोर, ज़्यादा आरामदेह।</p>
+    </div>
+
+    <div class="section section-hidden">
+        <h2>दूसरा सेक्शन: आरामदायक गति</h2>
+        <p>हम ट्रांज़िशन प्रॉपर्टी (`transition: 1s ease-out`) का उपयोग कर रहे हैं। 'ease-out' सुनिश्चित करता है कि एनीमेशन तेज़ी से शुरू हो और धीरे-धीरे धीमा हो जाए, जिससे कोमलता (Lenisness) बनी रहे।</p>
+    </div>
+
+    <div class="section section-hidden">
+        <h2>तीसरा सेक्शन: अंतिम अनुभव</h2>
+        <p>यह इफ़ेक्ट वेबसाइट को अधिक आकर्षक और आधुनिक बनाता है, क्योंकि यह उपयोगकर्ता को महसूस कराता है कि डिज़ाइन सोच-समझकर और कोमलता से किया गया है।</p>
+    </div>
 
     <script>
         // JavaScript (JS)
-        document.getElementById('lenisButton').addEventListener('click', function() {
-            // बटन को 'active' क्लास टॉगल करने दें
-            this.classList.toggle('active');
+        
+        // सभी Lenis सेक्शन प्राप्त करें
+        const lenisSections = document.querySelectorAll('.section-hidden');
 
-            // Lenis: प्रतिक्रिया को आरामदायक बनाने के लिए 
-            // 0.5 सेकंड बाद टेक्स्ट बदलें ताकि एनीमेशन पूरा हो जाए
-            setTimeout(() => {
-                if (this.classList.contains('active')) {
-                    this.textContent = 'Lenis सक्रिय!';
-                } else {
-                    this.textContent = 'Lenis बटन (कोमल ट्रांज़िशन)';
+        // चेक करें कि कोई तत्व दिखाई दे रहा है या नहीं
+        const isElementInViewport = (el) => {
+            const rect = el.getBoundingClientRect();
+            return (
+                rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.bottom >= 0
+            );
+        };
+
+        // स्क्रॉल हैंडलर फ़ंक्शन
+        const handleScroll = () => {
+            lenisSections.forEach(section => {
+                // अगर सेक्शन स्क्रीन में दिखाई दे रहा है
+                if (isElementInViewport(section)) {
+                    // 'section-hidden' को हटाएँ और 'section-visible' क्लास जोड़ें
+                    section.classList.remove('section-hidden');
+                    section.classList.add('section-visible');
                 }
-            }, 500); // CSS ट्रांज़िशन की अवधि के बराबर
-        });
+            });
+        };
+
+        // स्क्रॉल और लोड होने पर फ़ंक्शन को कॉल करें
+        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('load', handleScroll); // पेज लोड होने पर भी चेक करें
+        
+        // शुरुआत में एक बार तुरंत चेक करें
+        handleScroll(); 
+
     </script>
 </body>
 </html>
