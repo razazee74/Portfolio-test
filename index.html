@@ -21,7 +21,7 @@
             color: #e2e8f0; /* Light Text */
             line-height: 1.6;
             overflow-x: hidden;
-            position: relative; /* Required for canvas positioning */
+            position: relative; 
         }
 
         /* --- MOTION BACKGROUND CANVAS STYLE --- */
@@ -142,13 +142,17 @@
         }
 
         .service-card {
-            background-color: #1e293b; /* Solid color for overlap to work */
+            background-color: #1e293b;
             padding: 30px;
             border-radius: 16px;
             border: 1px solid #334155;
             transition: transform 0.3s, border-color 0.3s;
             box-shadow: 0 4px 6px rgba(0,0,0,0.2);
             position: relative; 
+            /* Height auto for desktop so it fits content naturally */
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
         .service-card:hover {
             border-color: #38bdf8;
@@ -288,50 +292,51 @@
         }
         .btn-okay:hover { background-color: #0ea5e9; }
 
-        /* --- MOBILE UPDATES (Buttons & Stacking Fixes) --- */
+        /* --- MOBILE UPDATES (Strict Equal Height & Button Line) --- */
         @media (max-width: 768px) {
             header h1 { font-size: 2rem; }
             
-            /* UPDATE 1: Buttons ek line mein aur chhote */
+            /* Buttons Fix: Ek Line mein aur Chhote */
             .cta-buttons {
-                flex-wrap: nowrap; /* Force single line */
-                gap: 10px; /* Gap kam kiya */
+                flex-wrap: nowrap;
+                gap: 8px; /* Thoda aur paas */
             }
             .btn {
-                width: auto; /* Full width hataya */
-                flex-grow: 1; /* Barabar jagah lenge */
-                padding: 12px 15px; /* Padding kam ki */
-                font-size: 0.95rem; /* Font chhota kiya */
+                width: auto;
+                flex: 1; /* Dono barabar space lenge */
+                padding: 10px 10px; /* Slim padding */
+                font-size: 0.9rem; /* Chhota font */
                 justify-content: center;
+                white-space: nowrap; /* Text tutega nahi */
             }
-            .btn i { font-size: 1.1rem; } /* Icon chhota kiya */
+            .btn i { font-size: 1.1rem; margin-right: 5px; }
 
             .shield-btn { width: 55px; height: 55px; bottom: 20px; right: 20px; }
 
-            /* Grid change for stacking */
             .services-grid {
                 display: block;
                 padding-bottom: 50px;
                 position: relative;
             }
 
-            /* UPDATE 2: Stacking Fixes (Equal Height & Z-Index) */
             .service-card {
                 position: sticky;
                 margin-bottom: 30px;
-                /* Shadow thoda strong kiya taaki separation dikhe */
                 box-shadow: 0 -5px 25px rgba(0,0,0,0.8); 
                 border-top: 1px solid #38bdf8;
-                background-color: #1e293b; /* Ensure solid background */
+                background-color: #1e293b;
                 
-                /* YAHAN HAI FIX: Sabhi cards ki height barabar kar di */
-                min-height: 380px; 
+                /* YAHAN HAI MAIN FIX: 
+                   Instagram Card ki height approx 430px hai. 
+                   Humne sabko force karke 430px kar diya. */
+                min-height: 430px; 
+                
                 display: flex;
                 flex-direction: column;
                 justify-content: flex-start;
             }
 
-            /* Z-Index ensure karega ki naya card purane ke upar hi aaye */
+            /* Z-Index Stacking */
             .service-card:nth-child(1) { top: 100px; z-index: 10; }
             .service-card:nth-child(2) { top: 115px; z-index: 20; }
             .service-card:nth-child(3) { top: 130px; z-index: 30; }
