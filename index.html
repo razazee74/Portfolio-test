@@ -31,15 +31,15 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1; /* Content ke peeche rahega */
-            pointer-events: none; /* Is par click nahi hoga */
+            z-index: -1; 
+            pointer-events: none; 
         }
 
         .container {
             max-width: 1100px;
             margin: 0 auto;
             padding: 20px;
-            position: relative; /* Canvas ke upar dikhne ke liye */
+            position: relative;
             z-index: 1;
         }
 
@@ -68,7 +68,6 @@
         header {
             text-align: center;
             padding: 80px 20px;
-            /* Background ko thoda transparent banaya taaki motion dikhe */
             background: linear-gradient(to bottom, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.9));
             border-bottom: 1px solid #334155;
             position: relative;
@@ -118,7 +117,7 @@
         
         .btn:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.4); }
 
-        /* Services Grid */
+        /* Services Grid (Default Desktop) */
         .section-title {
             text-align: center;
             font-size: 2.2rem;
@@ -142,15 +141,15 @@
             gap: 30px;
         }
 
-        /* Cards ko thoda transparent banaya */
         .service-card {
-            background-color: rgba(30, 41, 59, 0.85); /* Slight transparency */
+            background-color: #1e293b; /* Solid color for overlap to work */
             padding: 30px;
             border-radius: 16px;
             border: 1px solid #334155;
             transition: transform 0.3s, border-color 0.3s;
             box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-            backdrop-filter: blur(5px); /* Mast effect ke liye */
+            /* Important for mobile sticky */
+            position: relative; 
         }
         .service-card:hover {
             border-color: #38bdf8;
@@ -167,11 +166,17 @@
             gap: 12px;
         }
 
-        /* Icons Colors */
+        /* --- ICONS COLORS --- */
         .fa-instagram { color: #E1306C; }
         .fa-twitter, .fa-x-twitter { color: #1DA1F2; }
         .fa-whatsapp { color: #25D366; }
-        .fa-tiktok { color: #ff0050; }
+        
+        /* UPDATED: TikTok Icon Black (with white shadow for visibility) */
+        .fa-tiktok { 
+            color: #000000; 
+            text-shadow: 0 0 1px #fff; /* Shadow taaki dark background pe dikhe */
+        }
+        
         .fa-facebook { color: #1877F2; }
         .fa-youtube { color: #FF0000; }
 
@@ -180,7 +185,7 @@
         .service-price { color: #4ade80; font-weight: bold; font-size: 1rem; }
         .service-time { color: #64748b; font-size: 0.9rem; font-style: italic; }
 
-        /* Info Boxes transparent */
+        /* Info Boxes */
         .info-box {
             background-color: rgba(30, 41, 59, 0.85);
             padding: 35px;
@@ -192,13 +197,13 @@
             backdrop-filter: blur(5px);
         }
 
-        /* Footer (Fixed position and spacing, transparent bg) */
+        /* Footer */
         footer {
             text-align: center;
             padding: 40px 20px;
             padding-bottom: 130px; 
             margin-top: 80px;
-            background-color: rgba(30, 41, 59, 0.9); /* Transparent */
+            background-color: rgba(30, 41, 59, 0.9);
             border-top: 1px solid #334155;
             color: #94a3b8;
             font-size: 0.95rem;
@@ -207,15 +212,13 @@
         }
 
         /* --- FLOATING SHIELD & POPUP STYLES --- */
-
-        /* The Round Shield Button (Blue Theme) */
         .shield-btn {
             position: fixed;
             bottom: 25px;
             right: 25px;
             width: 65px;
             height: 65px;
-            background-color: #38bdf8; /* Blue Theme Color */
+            background-color: #38bdf8;
             border-radius: 50%;
             display: flex;
             justify-content: center;
@@ -225,17 +228,9 @@
             z-index: 999;
             transition: transform 0.3s ease;
         }
+        .shield-btn:hover { transform: scale(1.1); }
+        .shield-btn i { color: #0f172a; font-size: 30px; }
 
-        .shield-btn:hover {
-            transform: scale(1.1);
-        }
-
-        .shield-btn i {
-            color: #0f172a;
-            font-size: 30px;
-        }
-
-        /* The Modal Background Overlay */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -251,42 +246,26 @@
             pointer-events: none;
             transition: opacity 0.3s ease;
         }
+        .modal-overlay.active { opacity: 1; pointer-events: auto; }
 
-        .modal-overlay.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        /* The Popup Box (MOBILE FIXED) */
         .modal-content {
-            background: #1e293b; /* Solid background for popup to stay readable */
-            width: 90%; /* Mobile width */
-            max-width: 500px; /* Desktop max width */
-            max-height: 85vh; /* 85% of screen height */
+            background: #1e293b;
+            width: 90%;
+            max-width: 500px;
+            max-height: 85vh;
             display: flex;
-            flex-direction: column; /* Stack items */
+            flex-direction: column;
             padding: 25px;
             border-radius: 15px;
             text-align: center;
-            border: 2px solid #38bdf8; /* Blue Border */
+            border: 2px solid #38bdf8;
             transform: scale(0.8);
             transition: transform 0.3s ease;
             box-shadow: 0 0 25px rgba(56, 189, 248, 0.2);
         }
+        .modal-overlay.active .modal-content { transform: scale(1); }
+        .modal-content h2 { color: #38bdf8; margin-bottom: 15px; font-size: 1.5rem; text-transform: uppercase; flex-shrink: 0; }
 
-        .modal-overlay.active .modal-content {
-            transform: scale(1);
-        }
-
-        .modal-content h2 {
-            color: #38bdf8;
-            margin-bottom: 15px;
-            font-size: 1.5rem;
-            text-transform: uppercase;
-            flex-shrink: 0;
-        }
-
-        /* Internal Scrollable Area */
         .tos-text {
             color: #cbd5e1;
             font-size: 1rem;
@@ -299,18 +278,8 @@
             flex-grow: 1;
             border: 1px solid #334155;
         }
-
-        .tos-text ul {
-            list-style-type: none;
-        }
-
-        .tos-text li {
-            margin-bottom: 10px;
-            padding-left: 10px;
-            border-left: 3px solid #38bdf8;
-        }
-
-        /* Okay Button */
+        .tos-text ul { list-style-type: none; }
+        .tos-text li { margin-bottom: 10px; padding-left: 10px; border-left: 3px solid #38bdf8; }
         .btn-okay {
             background-color: #38bdf8;
             color: #0f172a;
@@ -324,15 +293,47 @@
             transition: background 0.3s;
             flex-shrink: 0;
         }
+        .btn-okay:hover { background-color: #0ea5e9; }
 
-        .btn-okay:hover {
-            background-color: #0ea5e9;
-        }
-
-        @media (max-width: 600px) {
+        /* --- MOBILE STACKING MAGIC (ISSE UPDATE KIYA HAI) --- */
+        @media (max-width: 768px) {
             header h1 { font-size: 2rem; }
             .btn { width: 100%; justify-content: center; }
             .shield-btn { width: 55px; height: 55px; bottom: 20px; right: 20px; }
+
+            /* Grid ko change kiya stack effect ke liye */
+            .services-grid {
+                display: block; /* Grid hataya taaki sticky kaam kare */
+                padding-bottom: 50px;
+            }
+
+            .service-card {
+                position: sticky; /* Jadoo yahan hai */
+                margin-bottom: 30px; /* Thoda gap */
+                box-shadow: 0 -5px 20px rgba(0,0,0,0.5); /* Upar shadow taaki overlap dikhe */
+                border-top: 1px solid #38bdf8; /* Upar highlight taaki alag dikhe */
+            }
+
+            /* Har card ko thoda neeche stick karwaya taaki pichhla wala dikhe */
+            /* Top value header height ke hisaab se adjust ki gayi hai (approx 100px) */
+            
+            /* Card 1 */
+            .service-card:nth-child(1) { top: 100px; }
+            
+            /* Card 2 - Thoda aur niche stick hoga taaki Card 1 ka top dikhe */
+            .service-card:nth-child(2) { top: 115px; }
+            
+            /* Card 3 */
+            .service-card:nth-child(3) { top: 130px; }
+            
+            /* Card 4 */
+            .service-card:nth-child(4) { top: 145px; }
+            
+            /* Card 5 */
+            .service-card:nth-child(5) { top: 160px; }
+            
+            /* Card 6 */
+            .service-card:nth-child(6) { top: 175px; }
         }
     </style>
 </head>
@@ -359,6 +360,7 @@
     <div class="container">
 
         <h2 class="section-title reveal">Our Services</h2>
+        
         <div class="services-grid">
             
             <div class="service-card reveal">
@@ -510,7 +512,7 @@
         canvas.height = window.innerHeight;
 
         let particlesArray;
-        const numberOfParticles = (canvas.height * canvas.width) / 9000; // Adjust density here
+        const numberOfParticles = (canvas.height * canvas.width) / 9000; 
 
         // Particle Class
         class Particle {
@@ -520,7 +522,7 @@
                 this.size = Math.random() * 2 + 1;
                 this.speedX = Math.random() * 1 - 0.5;
                 this.speedY = Math.random() * 1 - 0.5;
-                this.color = 'rgba(56, 189, 248, 0.5)'; // Light Blue color for particles
+                this.color = 'rgba(56, 189, 248, 0.5)'; 
             }
             update() {
                 this.x += this.speedX;
@@ -555,7 +557,7 @@
                     const distance = Math.sqrt(dx * dx + dy * dy);
                     if (distance < 100) {
                         ctx.beginPath();
-                        ctx.strokeStyle = `rgba(56, 189, 248, ${1 - distance / 100})`; // Blue lines fading out
+                        ctx.strokeStyle = `rgba(56, 189, 248, ${1 - distance / 100})`; 
                         ctx.lineWidth = 0.5;
                         ctx.moveTo(particlesArray[i].x, particlesArray[i].y);
                         ctx.lineTo(particlesArray[j].x, particlesArray[j].y);
@@ -575,7 +577,7 @@
         init();
         animate();
 
-        // --- EXISTING SCROLL REVEAL SCRIPT ---
+        // --- SCROLL REVEAL SCRIPT ---
         function reveal() {
             var reveals = document.querySelectorAll(".reveal");
             for (var i = 0; i < reveals.length; i++) {
@@ -590,7 +592,7 @@
         window.addEventListener("scroll", reveal);
         reveal();
 
-        // --- EXISTING POPUP LOGIC ---
+        // --- POPUP LOGIC ---
         function openPopup() {
             document.getElementById('tosPopup').classList.add('active');
             document.body.style.overflow = 'hidden'; 
