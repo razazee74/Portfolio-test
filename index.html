@@ -17,14 +17,14 @@
         }
 
         body {
-            background-color: #0f172a; /* Fallback Dark Background */
-            color: #e2e8f0; /* Light Text */
+            background-color: #0f172a; 
+            color: #e2e8f0; 
             line-height: 1.6;
             overflow-x: hidden;
             position: relative; 
         }
 
-        /* --- MOTION BACKGROUND CANVAS STYLE --- */
+        /* --- MOTION BACKGROUND CANVAS --- */
         #particle-canvas {
             position: fixed;
             top: 0;
@@ -43,7 +43,7 @@
             z-index: 1;
         }
 
-        /* --- Scroll Animations --- */
+        /* --- Animations --- */
         .reveal {
             opacity: 0;
             transform: translateY(50px);
@@ -64,7 +64,7 @@
             transform: translateX(0);
         }
 
-        /* Header */
+        /* --- Header Styles (Compact & Bold) --- */
         header {
             text-align: center;
             padding: 80px 20px;
@@ -76,23 +76,22 @@
 
         header h1 {
             font-size: 2.8rem;
-            color: #fff; /* Pure White Text for Heading */
+            color: #fff;
             font-weight: 800; /* Extra Bold */
             margin-bottom: 15px;
-            /* text-transform: uppercase;  <-- REMOVED THIS to match your photo */
             letter-spacing: 0.5px;
             line-height: 1.2;
         }
 
         header p {
             font-size: 1.15rem;
-            color: #cbd5e1; /* Slightly lighter readable text */
+            color: #cbd5e1;
             max-width: 650px;
             margin: 0 auto 30px auto;
             line-height: 1.6;
         }
 
-        /* Header Buttons (Desktop Default) */
+        /* Buttons (Desktop) */
         .cta-buttons {
             display: flex;
             justify-content: center;
@@ -101,11 +100,11 @@
         }
 
         .btn {
-            padding: 12px 30px; /* Thoda sleek banaya */
+            padding: 12px 30px;
             font-size: 1.1rem;
             font-weight: 600;
             text-decoration: none;
-            border-radius: 8px; /* Thoda square round jaisa photo mein hai */
+            border-radius: 8px;
             transition: transform 0.3s, box-shadow 0.3s;
             display: inline-flex;
             align-items: center;
@@ -114,18 +113,15 @@
         }
         
         .btn i { font-size: 1.3rem; }
-        
-        /* Button Colors */
-        .btn-telegram { background-color: #1a988d; color: white; } /* Teal Color match */
+        .btn-telegram { background-color: #1a988d; color: white; }
         .btn-whatsapp { background-color: #25D366; color: white; }
-        
         .btn:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
 
-        /* Services Grid */
+        /* --- Service Cards & Accordion --- */
         .section-title {
             text-align: center;
             font-size: 2.2rem;
-            margin: 60px 0 40px; /* Thoda gap kam kiya */
+            margin: 60px 0 40px;
             color: #f8fafc;
             position: relative;
         }
@@ -153,9 +149,11 @@
             transition: transform 0.3s, border-color 0.3s;
             box-shadow: 0 4px 6px rgba(0,0,0,0.2);
             position: relative; 
-            height: 100%;
             display: flex;
             flex-direction: column;
+            
+            /* FIXED HEIGHT logic for Desktop */
+            min-height: 500px; 
         }
         .service-card:hover {
             border-color: #38bdf8;
@@ -163,13 +161,59 @@
         }
         .service-card h3 {
             font-size: 1.6rem;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             color: #fff;
             border-bottom: 1px solid #334155;
             padding-bottom: 15px;
             display: flex;
             align-items: center;
             gap: 12px;
+        }
+
+        /* Accordion Styles */
+        .accordion-item {
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(51, 65, 85, 0.5); /* Halka divider */
+            padding-bottom: 10px;
+        }
+        
+        .accordion-header {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #e2e8f0;
+            font-weight: 700; /* Bold Headline */
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+        
+        .accordion-header:hover {
+            color: #38bdf8;
+        }
+
+        .accordion-header i {
+            color: #38bdf8; /* Teal/Blue arrow */
+            font-size: 0.9rem;
+            transition: transform 0.3s ease;
+        }
+
+        /* Rotate arrow when active */
+        .accordion-header.active i {
+            transform: rotate(90deg);
+        }
+
+        .accordion-content {
+            display: none; /* Default Hidden */
+            margin-top: 10px;
+            padding-left: 25px; /* Arrow ke niche se start ho */
+            font-size: 0.95rem;
+            color: #94a3b8;
+            line-height: 1.6;
+        }
+        
+        .accordion-content p {
+            margin-bottom: 4px;
         }
 
         /* --- ICONS COLORS --- */
@@ -180,12 +224,7 @@
         .fa-facebook { color: #1877F2; }
         .fa-youtube { color: #FF0000; }
 
-        .service-item { margin-bottom: 18px; }
-        .service-name { font-weight: 600; color: #cbd5e1; font-size: 1.05rem; display: block; }
-        .service-price { color: #4ade80; font-weight: bold; font-size: 1rem; }
-        .service-time { color: #64748b; font-size: 0.9rem; font-style: italic; }
-
-        /* Info Boxes */
+        /* Footer & Info */
         .info-box {
             background-color: rgba(30, 41, 59, 0.85);
             padding: 35px;
@@ -197,7 +236,6 @@
             backdrop-filter: blur(5px);
         }
 
-        /* Footer */
         footer {
             text-align: center;
             padding: 40px 20px;
@@ -211,7 +249,7 @@
             z-index: 1;
         }
 
-        /* --- FLOATING SHIELD & POPUP STYLES --- */
+        /* Shield & Popup */
         .shield-btn {
             position: fixed;
             bottom: 25px;
@@ -247,7 +285,6 @@
             transition: opacity 0.3s ease;
         }
         .modal-overlay.active { opacity: 1; pointer-events: auto; }
-
         .modal-content {
             background: #1e293b;
             width: 90%;
@@ -261,11 +298,9 @@
             border: 2px solid #38bdf8;
             transform: scale(0.8);
             transition: transform 0.3s ease;
-            box-shadow: 0 0 25px rgba(56, 189, 248, 0.2);
         }
         .modal-overlay.active .modal-content { transform: scale(1); }
         .modal-content h2 { color: #38bdf8; margin-bottom: 15px; font-size: 1.5rem; text-transform: uppercase; flex-shrink: 0; }
-
         .tos-text {
             color: #cbd5e1;
             font-size: 1rem;
@@ -278,8 +313,6 @@
             flex-grow: 1;
             border: 1px solid #334155;
         }
-        .tos-text ul { list-style-type: none; }
-        .tos-text li { margin-bottom: 10px; padding-left: 10px; border-left: 3px solid #38bdf8; }
         .btn-okay {
             background-color: #38bdf8;
             color: #0f172a;
@@ -295,49 +328,32 @@
         }
         .btn-okay:hover { background-color: #0ea5e9; }
 
-        /* --- MOBILE SPECIFIC UPDATES (Header Fix & Stacking) --- */
+        /* --- MOBILE SPECIFIC --- */
         @media (max-width: 768px) {
-            /* 1. HEADER COMPACT FIX */
-            header {
-                padding: 40px 15px; /* Padding kam ki taaki space bache */
-                text-align: center;
-            }
+            header { padding: 40px 15px; }
+            header h1 { font-size: 2rem; margin-bottom: 12px; }
+            header p { font-size: 0.95rem; margin-bottom: 25px; }
 
-            header h1 {
-                font-size: 2rem; /* Size adjust kiya */
-                line-height: 1.2;
-                margin-bottom: 12px;
-            }
-
-            header p {
-                font-size: 0.95rem; /* Font size thoda chhota taaki fit ho */
-                line-height: 1.5;
-                padding: 0 10px; /* Side se thoda space */
-                margin-bottom: 25px;
-                color: #b0bec5;
-            }
-
-            /* 2. BUTTONS SIDE-BY-SIDE FIX */
+            /* Side-by-Side Buttons */
             .cta-buttons {
                 display: flex;
-                flex-direction: row; /* Force side by side */
-                flex-wrap: nowrap; /* Do not wrap */
+                flex-direction: row; 
+                flex-wrap: nowrap; 
                 gap: 10px;
                 width: 100%;
                 padding: 0 5px;
             }
             .btn {
                 width: auto;
-                flex: 1; /* Equal width */
+                flex: 1; 
                 padding: 12px 10px;
                 font-size: 0.95rem;
                 justify-content: center;
             }
-            .btn i { margin-right: 5px; }
 
             .shield-btn { width: 55px; height: 55px; bottom: 20px; right: 20px; }
 
-            /* 3. STACKING FIX (Equal Height) */
+            /* Stacked Cards & Equal Height */
             .services-grid {
                 display: block;
                 padding-bottom: 50px;
@@ -351,15 +367,14 @@
                 border-top: 1px solid #38bdf8;
                 background-color: #1e293b;
                 
-                /* Fixed Height for Stacking */
-                min-height: 430px; 
+                /* FIXED HEIGHT FOR MOBILE (Based on longest content - Insta) */
+                min-height: 550px; /* Sab dabbe barabar size ke */
                 
                 display: flex;
                 flex-direction: column;
                 justify-content: flex-start;
             }
 
-            /* Z-Index Stacking */
             .service-card:nth-child(1) { top: 100px; z-index: 10; }
             .service-card:nth-child(2) { top: 115px; z-index: 20; }
             .service-card:nth-child(3) { top: 130px; z-index: 30; }
@@ -375,7 +390,6 @@
     <header>
         <div class="container slide-left reveal">
             <h1>Premium Social Media<br>Services</h1>
-            
             <p>Trusted • Private • Efficient — Services across Instagram, Twitter, WhatsApp, TikTok, Facebook, YouTube and more.</p>
             
             <div class="cta-buttons">
@@ -391,96 +405,164 @@
     </header>
 
     <div class="container">
-
         <h2 class="section-title reveal">Our Services</h2>
         <div class="services-grid">
             
             <div class="service-card reveal">
                 <h3><i class="fa-brands fa-instagram"></i> Instagram</h3>
-                <div class="service-item">
-                    <span class="service-name">Removal</span>
-                    <span class="service-price">Starting Price - $250</span><br>
-                    <span class="service-time">Turnaround: 0-72 hours</span>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header"><i class="fa-solid fa-caret-right"></i> Removal</div>
+                    <div class="accordion-content">
+                        <p>Starting Price - $250</p>
+                        <p>Turnaround time 0-72 hours</p>
+                    </div>
                 </div>
-                <div class="service-item">
-                    <span class="service-name">Recovery</span>
-                    <span class="service-price">Normal - $2500 | Copyright - $3500</span><br>
-                    <span class="service-time">Turnaround: 0-24 hours</span>
+                <div class="accordion-item">
+                    <div class="accordion-header"><i class="fa-solid fa-caret-right"></i> Recovery</div>
+                    <div class="accordion-content">
+                        <p>Starting Price - $250</p>
+                        <p>Turnaround time 0-72 hours</p>
+                    </div>
                 </div>
-                <div class="service-item">
-                    <span class="service-name">Verification</span>
-                    <span class="service-price">Price - $7000+</span><br>
-                    <span class="service-time">Turnaround: 0-1 week</span>
+                <div class="accordion-item">
+                    <div class="accordion-header"><i class="fa-solid fa-caret-right"></i> Verification</div>
+                    <div class="accordion-content">
+                        <p>Starting Price - $250</p>
+                        <p>Turnaround time 0-72 hours</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header"><i class="fa-solid fa-caret-right"></i> Username Claim</div>
+                    <div class="accordion-content">
+                        <p>Starting Price - $250</p>
+                        <p>Turnaround time 0-72 hours</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header"><i class="fa-solid fa-caret-right"></i> Look-up</div>
+                    <div class="accordion-content">
+                        <p>Starting Price - $250</p>
+                        <p>Turnaround time 0-72 hours</p>
+                    </div>
                 </div>
             </div>
 
             <div class="service-card reveal">
                 <h3><i class="fa-brands fa-twitter"></i> Twitter / X</h3>
-                <div class="service-item">
-                    <span class="service-name">Removal</span>
-                    <span class="service-price">Starting Price - $5000</span><br>
-                    <span class="service-time">Turnaround: 0-1 week</span>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header"><i class="fa-solid fa-caret-right"></i> Removal</div>
+                    <div class="accordion-content">
+                        <p>Starting Price - $250</p>
+                        <p>Turnaround time 0-72 hours</p>
+                    </div>
                 </div>
-                <div class="service-item">
-                    <span class="service-name">Recovery</span>
-                    <span class="service-price">Starting Price - $10000</span><br>
-                    <span class="service-time">Turnaround: 0-1 week</span>
+                <div class="accordion-item">
+                    <div class="accordion-header"><i class="fa-solid fa-caret-right"></i> Recovery</div>
+                    <div class="accordion-content">
+                        <p>Starting Price - $250</p>
+                        <p>Turnaround time 0-72 hours</p>
+                    </div>
                 </div>
-            </div>
+                </div>
 
             <div class="service-card reveal">
                 <h3><i class="fa-brands fa-whatsapp"></i> WhatsApp</h3>
-                <div class="service-item">
-                    <span class="service-name">Removal (Ban)</span>
-                    <span class="service-price">Price - $300</span><br>
-                    <span class="service-time">Turnaround: 0-72 hours</span>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header"><i class="fa-solid fa-caret-right"></i> Removal</div>
+                    <div class="accordion-content">
+                        <p>Starting Price - $250</p>
+                        <p>Turnaround time 0-72 hours</p>
+                    </div>
                 </div>
-                <div class="service-item">
-                    <span class="service-name">Recovery (Unban)</span>
-                    <span class="service-price">Price - $999</span><br>
-                    <span class="service-time">Turnaround: 0-1 week</span>
+                <div class="accordion-item">
+                    <div class="accordion-header"><i class="fa-solid fa-caret-right"></i> Recovery</div>
+                    <div class="accordion-content">
+                        <p>Starting Price - $250</p>
+                        <p>Turnaround time 0-72 hours</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header"><i class="fa-solid fa-caret-right"></i> Verification</div>
+                    <div class="accordion-content">
+                        <p>Starting Price - $250</p>
+                        <p>Turnaround time 0-72 hours</p>
+                    </div>
                 </div>
             </div>
 
             <div class="service-card reveal">
                 <h3><i class="fa-brands fa-tiktok"></i> TikTok</h3>
-                <div class="service-item">
-                    <span class="service-name">Removal</span>
-                    <span class="service-price">Starting Price - $299</span><br>
-                    <span class="service-time">Turnaround: 0-48 hours</span>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header"><i class="fa-solid fa-caret-right"></i> Removal</div>
+                    <div class="accordion-content">
+                        <p>Starting Price - $250</p>
+                        <p>Turnaround time 0-72 hours</p>
+                    </div>
                 </div>
-                <div class="service-item">
-                    <span class="service-name">Verification</span>
-                    <span class="service-price">Price - $5000</span><br>
-                    <span class="service-time">Turnaround: 0-2 weeks</span>
+                <div class="accordion-item">
+                    <div class="accordion-header"><i class="fa-solid fa-caret-right"></i> Recovery</div>
+                    <div class="accordion-content">
+                        <p>Starting Price - $250</p>
+                        <p>Turnaround time 0-72 hours</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header"><i class="fa-solid fa-caret-right"></i> Verification</div>
+                    <div class="accordion-content">
+                        <p>Starting Price - $250</p>
+                        <p>Turnaround time 0-72 hours</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header"><i class="fa-solid fa-caret-right"></i> Username Claim</div>
+                    <div class="accordion-content">
+                        <p>Starting Price - $250</p>
+                        <p>Turnaround time 0-72 hours</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header"><i class="fa-solid fa-caret-right"></i> Look-up</div>
+                    <div class="accordion-content">
+                        <p>Starting Price - $250</p>
+                        <p>Turnaround time 0-72 hours</p>
+                    </div>
                 </div>
             </div>
 
             <div class="service-card reveal">
                 <h3><i class="fa-brands fa-facebook"></i> Facebook</h3>
-                <div class="service-item">
-                    <span class="service-name">Removal</span>
-                    <span class="service-price">Starting Price - $500</span><br>
-                    <span class="service-time">Turnaround: 0-1 week</span>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header"><i class="fa-solid fa-caret-right"></i> Removal</div>
+                    <div class="accordion-content">
+                        <p>Starting Price - $250</p>
+                        <p>Turnaround time 0-72 hours</p>
+                    </div>
                 </div>
-                <div class="service-item">
-                    <span class="service-name">Recovery</span>
-                    <span class="service-price">Starting Price - $3000</span><br>
-                    <span class="service-time">Turnaround: 0-48 hours</span>
+                <div class="accordion-item">
+                    <div class="accordion-header"><i class="fa-solid fa-caret-right"></i> Recovery</div>
+                    <div class="accordion-content">
+                        <p>Starting Price - $250</p>
+                        <p>Turnaround time 0-72 hours</p>
+                    </div>
                 </div>
-            </div>
-
-             <div class="service-card reveal">
-                <h3><i class="fa-brands fa-youtube"></i> YouTube</h3>
-                <div class="service-item">
-                    <span class="service-name">Channel Removal</span>
-                    <span class="service-price">Price - $3000</span><br>
-                    <span class="service-time">Turnaround: 0-1 week</span>
+                <div class="accordion-item">
+                    <div class="accordion-header"><i class="fa-solid fa-caret-right"></i> Facebook</div>
+                    <div class="accordion-content">
+                        <p>Starting Price - $250</p>
+                        <p>Turnaround time 0-72 hours</p>
+                    </div>
                 </div>
-                <div class="service-item">
-                    <span class="service-name">Video Removal</span>
-                    <span class="service-price">Price - $500 per video</span><br>
-                    <span class="service-time">Turnaround: 0-72 hours</span>
+                 <div class="accordion-item">
+                    <div class="accordion-header"><i class="fa-solid fa-caret-right"></i> Verification</div>
+                    <div class="accordion-content">
+                        <p>Starting Price - $250</p>
+                        <p>Turnaround time 0-72 hours</p>
+                    </div>
                 </div>
             </div>
 
@@ -502,7 +584,6 @@
             <p style="text-align: left; margin-bottom: 10px;"><strong>Q: How do I pay?</strong><br>A: Payment details are shared after inquiry. Secure methods only.</p>
             <p style="text-align: left;"><strong>Q: Do I get a refund if it fails?</strong><br>A: Yes, 100% refund if we fail to deliver.</p>
         </div>
-
     </div>
 
     <footer>
@@ -516,27 +597,39 @@
     <div id="tosPopup" class="modal-overlay">
         <div class="modal-content">
             <h2>Terms of Service</h2>
-            
             <div class="tos-text">
                 <p>Welcome to SMFixer. By using our services, you agree to the following terms:</p>
                 <br>
                 <ul>
-                    <li>1. <strong>Confidentiality:</strong> All services are strictly confidential and private. We never share client data.</li>
-                    <li>2. <strong>Payments:</strong> Payments must be made in advance or via escrow as agreed.</li>
-                    <li>3. <strong>Refund Policy:</strong> We guarantee a full refund if the service is not delivered within the agreed timeframe.</li>
-                    <li>4. <strong>Legal Use:</strong> We do not support illegal activities or hacking. Services are for recovery and policy-based takedowns only.</li>
-                    <li>5. <strong>Turnaround Time:</strong> Turnaround times are estimates and may vary based on platform updates.</li>
-                    <li>6. <strong>Verification:</strong> Verification services require legitimate press and notability.</li>
-                    <li>7. <strong>Liability:</strong> We are not liable for platform policy changes that occur after service delivery.</li>
+                    <li>1. <strong>Confidentiality:</strong> All services are strictly confidential.</li>
+                    <li>2. <strong>Payments:</strong> Payments must be made in advance.</li>
+                    <li>3. <strong>Refund Policy:</strong> Full refund if the service is not delivered.</li>
                 </ul>
                 <p>Please contact support for more details.</p>
             </div>
-            
             <button class="btn-okay" onclick="closePopup()">Okay</button>
         </div>
     </div>
 
     <script>
+        // --- ACCORDION SCRIPT ---
+        const accordions = document.querySelectorAll('.accordion-header');
+
+        accordions.forEach(acc => {
+            acc.addEventListener('click', function() {
+                // Toggle active class on header
+                this.classList.toggle('active');
+                
+                // Toggle content display
+                const content = this.nextElementSibling;
+                if (content.style.display === "block") {
+                    content.style.display = "none";
+                } else {
+                    content.style.display = "block";
+                }
+            });
+        });
+
         // --- MOTION BACKGROUND SCRIPT ---
         const canvas = document.getElementById('particle-canvas');
         const ctx = canvas.getContext('2d');
@@ -546,7 +639,6 @@
         let particlesArray;
         const numberOfParticles = (canvas.height * canvas.width) / 9000; 
 
-        // Particle Class
         class Particle {
             constructor() {
                 this.x = Math.random() * canvas.width;
