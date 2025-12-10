@@ -89,7 +89,7 @@
             margin: 0 auto 30px auto;
         }
 
-        /* Header Buttons */
+        /* Header Buttons (Desktop Default) */
         .cta-buttons {
             display: flex;
             justify-content: center;
@@ -148,7 +148,6 @@
             border: 1px solid #334155;
             transition: transform 0.3s, border-color 0.3s;
             box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-            /* Important for mobile sticky */
             position: relative; 
         }
         .service-card:hover {
@@ -170,13 +169,7 @@
         .fa-instagram { color: #E1306C; }
         .fa-twitter, .fa-x-twitter { color: #1DA1F2; }
         .fa-whatsapp { color: #25D366; }
-        
-        /* UPDATED: TikTok Icon Black (with white shadow for visibility) */
-        .fa-tiktok { 
-            color: #000000; 
-            text-shadow: 0 0 1px #fff; /* Shadow taaki dark background pe dikhe */
-        }
-        
+        .fa-tiktok { color: #000000; text-shadow: 0 0 1px #fff; }
         .fa-facebook { color: #1877F2; }
         .fa-youtube { color: #FF0000; }
 
@@ -295,45 +288,56 @@
         }
         .btn-okay:hover { background-color: #0ea5e9; }
 
-        /* --- MOBILE STACKING MAGIC (ISSE UPDATE KIYA HAI) --- */
+        /* --- MOBILE UPDATES (Buttons & Stacking Fixes) --- */
         @media (max-width: 768px) {
             header h1 { font-size: 2rem; }
-            .btn { width: 100%; justify-content: center; }
+            
+            /* UPDATE 1: Buttons ek line mein aur chhote */
+            .cta-buttons {
+                flex-wrap: nowrap; /* Force single line */
+                gap: 10px; /* Gap kam kiya */
+            }
+            .btn {
+                width: auto; /* Full width hataya */
+                flex-grow: 1; /* Barabar jagah lenge */
+                padding: 12px 15px; /* Padding kam ki */
+                font-size: 0.95rem; /* Font chhota kiya */
+                justify-content: center;
+            }
+            .btn i { font-size: 1.1rem; } /* Icon chhota kiya */
+
             .shield-btn { width: 55px; height: 55px; bottom: 20px; right: 20px; }
 
-            /* Grid ko change kiya stack effect ke liye */
+            /* Grid change for stacking */
             .services-grid {
-                display: block; /* Grid hataya taaki sticky kaam kare */
+                display: block;
                 padding-bottom: 50px;
+                position: relative;
             }
 
+            /* UPDATE 2: Stacking Fixes (Equal Height & Z-Index) */
             .service-card {
-                position: sticky; /* Jadoo yahan hai */
-                margin-bottom: 30px; /* Thoda gap */
-                box-shadow: 0 -5px 20px rgba(0,0,0,0.5); /* Upar shadow taaki overlap dikhe */
-                border-top: 1px solid #38bdf8; /* Upar highlight taaki alag dikhe */
+                position: sticky;
+                margin-bottom: 30px;
+                /* Shadow thoda strong kiya taaki separation dikhe */
+                box-shadow: 0 -5px 25px rgba(0,0,0,0.8); 
+                border-top: 1px solid #38bdf8;
+                background-color: #1e293b; /* Ensure solid background */
+                
+                /* YAHAN HAI FIX: Sabhi cards ki height barabar kar di */
+                min-height: 380px; 
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
             }
 
-            /* Har card ko thoda neeche stick karwaya taaki pichhla wala dikhe */
-            /* Top value header height ke hisaab se adjust ki gayi hai (approx 100px) */
-            
-            /* Card 1 */
-            .service-card:nth-child(1) { top: 100px; }
-            
-            /* Card 2 - Thoda aur niche stick hoga taaki Card 1 ka top dikhe */
-            .service-card:nth-child(2) { top: 115px; }
-            
-            /* Card 3 */
-            .service-card:nth-child(3) { top: 130px; }
-            
-            /* Card 4 */
-            .service-card:nth-child(4) { top: 145px; }
-            
-            /* Card 5 */
-            .service-card:nth-child(5) { top: 160px; }
-            
-            /* Card 6 */
-            .service-card:nth-child(6) { top: 175px; }
+            /* Z-Index ensure karega ki naya card purane ke upar hi aaye */
+            .service-card:nth-child(1) { top: 100px; z-index: 10; }
+            .service-card:nth-child(2) { top: 115px; z-index: 20; }
+            .service-card:nth-child(3) { top: 130px; z-index: 30; }
+            .service-card:nth-child(4) { top: 145px; z-index: 40; }
+            .service-card:nth-child(5) { top: 160px; z-index: 50; }
+            .service-card:nth-child(6) { top: 175px; z-index: 60; }
         }
     </style>
 </head>
@@ -360,7 +364,6 @@
     <div class="container">
 
         <h2 class="section-title reveal">Our Services</h2>
-        
         <div class="services-grid">
             
             <div class="service-card reveal">
