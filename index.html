@@ -76,17 +76,20 @@
 
         header h1 {
             font-size: 2.8rem;
-            color: #38bdf8;
+            color: #fff; /* Pure White Text for Heading */
+            font-weight: 800; /* Extra Bold */
             margin-bottom: 15px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            /* text-transform: uppercase;  <-- REMOVED THIS to match your photo */
+            letter-spacing: 0.5px;
+            line-height: 1.2;
         }
 
         header p {
-            font-size: 1.2rem;
-            color: #94a3b8;
+            font-size: 1.15rem;
+            color: #cbd5e1; /* Slightly lighter readable text */
             max-width: 650px;
             margin: 0 auto 30px auto;
+            line-height: 1.6;
         }
 
         /* Header Buttons (Desktop Default) */
@@ -98,30 +101,31 @@
         }
 
         .btn {
-            padding: 14px 35px;
+            padding: 12px 30px; /* Thoda sleek banaya */
             font-size: 1.1rem;
-            font-weight: bold;
+            font-weight: 600;
             text-decoration: none;
-            border-radius: 50px;
+            border-radius: 8px; /* Thoda square round jaisa photo mein hai */
             transition: transform 0.3s, box-shadow 0.3s;
             display: inline-flex;
             align-items: center;
-            gap: 10px;
+            justify-content: center;
+            gap: 8px;
         }
         
-        .btn i { font-size: 1.4rem; }
+        .btn i { font-size: 1.3rem; }
         
         /* Button Colors */
-        .btn-telegram { background-color: #229ED9; color: white; }
+        .btn-telegram { background-color: #1a988d; color: white; } /* Teal Color match */
         .btn-whatsapp { background-color: #25D366; color: white; }
         
-        .btn:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.4); }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
 
-        /* Services Grid (Default Desktop) */
+        /* Services Grid */
         .section-title {
             text-align: center;
             font-size: 2.2rem;
-            margin: 80px 0 50px;
+            margin: 60px 0 40px; /* Thoda gap kam kiya */
             color: #f8fafc;
             position: relative;
         }
@@ -149,7 +153,6 @@
             transition: transform 0.3s, border-color 0.3s;
             box-shadow: 0 4px 6px rgba(0,0,0,0.2);
             position: relative; 
-            /* Height auto for desktop so it fits content naturally */
             height: 100%;
             display: flex;
             flex-direction: column;
@@ -199,7 +202,7 @@
             text-align: center;
             padding: 40px 20px;
             padding-bottom: 130px; 
-            margin-top: 80px;
+            margin-top: 50px;
             background-color: rgba(30, 41, 59, 0.9);
             border-top: 1px solid #334155;
             color: #94a3b8;
@@ -292,27 +295,49 @@
         }
         .btn-okay:hover { background-color: #0ea5e9; }
 
-        /* --- MOBILE UPDATES (Strict Equal Height & Button Line) --- */
+        /* --- MOBILE SPECIFIC UPDATES (Header Fix & Stacking) --- */
         @media (max-width: 768px) {
-            header h1 { font-size: 2rem; }
-            
-            /* Buttons Fix: Ek Line mein aur Chhote */
+            /* 1. HEADER COMPACT FIX */
+            header {
+                padding: 40px 15px; /* Padding kam ki taaki space bache */
+                text-align: center;
+            }
+
+            header h1 {
+                font-size: 2rem; /* Size adjust kiya */
+                line-height: 1.2;
+                margin-bottom: 12px;
+            }
+
+            header p {
+                font-size: 0.95rem; /* Font size thoda chhota taaki fit ho */
+                line-height: 1.5;
+                padding: 0 10px; /* Side se thoda space */
+                margin-bottom: 25px;
+                color: #b0bec5;
+            }
+
+            /* 2. BUTTONS SIDE-BY-SIDE FIX */
             .cta-buttons {
-                flex-wrap: nowrap;
-                gap: 8px; /* Thoda aur paas */
+                display: flex;
+                flex-direction: row; /* Force side by side */
+                flex-wrap: nowrap; /* Do not wrap */
+                gap: 10px;
+                width: 100%;
+                padding: 0 5px;
             }
             .btn {
                 width: auto;
-                flex: 1; /* Dono barabar space lenge */
-                padding: 10px 10px; /* Slim padding */
-                font-size: 0.9rem; /* Chhota font */
+                flex: 1; /* Equal width */
+                padding: 12px 10px;
+                font-size: 0.95rem;
                 justify-content: center;
-                white-space: nowrap; /* Text tutega nahi */
             }
-            .btn i { font-size: 1.1rem; margin-right: 5px; }
+            .btn i { margin-right: 5px; }
 
             .shield-btn { width: 55px; height: 55px; bottom: 20px; right: 20px; }
 
+            /* 3. STACKING FIX (Equal Height) */
             .services-grid {
                 display: block;
                 padding-bottom: 50px;
@@ -326,9 +351,7 @@
                 border-top: 1px solid #38bdf8;
                 background-color: #1e293b;
                 
-                /* YAHAN HAI MAIN FIX: 
-                   Instagram Card ki height approx 430px hai. 
-                   Humne sabko force karke 430px kar diya. */
+                /* Fixed Height for Stacking */
                 min-height: 430px; 
                 
                 display: flex;
@@ -351,7 +374,8 @@
 
     <header>
         <div class="container slide-left reveal">
-            <h1>Premium Social Media Services</h1>
+            <h1>Premium Social Media<br>Services</h1>
+            
             <p>Trusted • Private • Efficient — Services across Instagram, Twitter, WhatsApp, TikTok, Facebook, YouTube and more.</p>
             
             <div class="cta-buttons">
